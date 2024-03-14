@@ -220,6 +220,8 @@ os.environ 是一个包含所有当前进程环境变量的字典对象。
 print(os.name)  # posix
 print(os.environ.get('HOME'))  # /Users/chenhao
 
+print(os.environ.get('1231'))
+
 """
 进程管理：
     虽然不是 os 模块的核心功能，但可以通过其提供的接口与其他模块配合，实现一些简单的进程管理，
@@ -250,4 +252,3 @@ print(os.environ.get('HOME'))  # /Users/chenhao
 多线程模型：
 在一个进程中可以有多个执行流，即线程，它们共享相同的地址空间和其他资源，但也拥有独立的执行上下文，从而实现更高的并发度。
 """
-

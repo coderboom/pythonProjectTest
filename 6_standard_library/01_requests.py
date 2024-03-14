@@ -136,6 +136,8 @@ response 是对服务器响应的一个封装，包含了所有关于此次HTTP�
 params 参数用于向URL添加查询参数（query parameters）。在实际请求的URL中，这些参数将以“？”分隔，并以“&”连接不同的键值对。
 其他属性和方法：还包括了elapsed（请求所花费的时间）、encoding（响应内容的编码方式）、raise_for_status（检查HTTP状态码并根据需要抛出异常）等。
 """
+
+
 reponse_json = requests.get('https://www.runoob.com/try/ajax/json_demo.json')
 print(reponse_json.json())
 print('-----------------------------')
