@@ -75,3 +75,18 @@ print(a, *b, c)
 print(type(b))  # 输出: <class 'list'>
 c, *_, d = range(20, 30)  # 变量_是一个特殊的变量，用_来接收不使用的变量
 print(c, d, sep=' ')
+
+
+# 字典解包到函数参数
+# 假设有一个函数，接收多个参数
+def my_func(param1, param2, param3):
+    print(param1, param2, param3)
+
+
+# 创建一个字典，键值对应函数参数
+my_dict = {'param1': 'value1', 'param2': 'value2', 'param3': 'value3'}
+
+# 使用**运算符将字典解包到函数参数中
+my_func(**my_dict)
+"""可以使用**运算符将字典解包到函数参数中。这样做的好处是，可以方便地将一个字典中的键值对一一对应到函数的参数中，而不需要手动一个个传递参数。这对于需要传递大量参数的函数来说，尤其方便
+"""
