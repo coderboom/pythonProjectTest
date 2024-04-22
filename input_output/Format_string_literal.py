@@ -63,11 +63,12 @@ print(f'zui di{-8080:}m')
 print(f'zui di{-8080: }m')
 print(f'zui di{8080: }m')
 print(f'zui di{8080:@^ 20.5%}m')
-
+print('--------------------------------------')
 xiaoshu = 2361.4537598
+len_xiaoshu = 40
 print(f'xiaoshu:{xiaoshu:.5f}lelel')
 print(f'xiaoshu:{xiaoshu:20.5f}lelel')
-print(f'xiaoshu:{xiaoshu:^20.5f}lelel')
+print(f'xiaoshu:{xiaoshu:^{len_xiaoshu}.5f}lelel')
 print(f'xiaoshu:{xiaoshu:^20.10%}lelel')
 print(f'xiaoshu:{xiaoshu:*^30.5f}lelel')
 print(f'xiaoshu:{xiaoshu:g}')

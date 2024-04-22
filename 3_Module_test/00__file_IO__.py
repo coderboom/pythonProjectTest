@@ -406,49 +406,94 @@ with open('example.txt', 'a') as f:
 """读取.xlsx文件"""
 from openpyxl import load_workbook
 
+
 # 打开一个 .xlsx 文件
-wb = load_workbook(filename='example.xlsx')
+# wb = load_workbook(filename='example.xlsx')
 
 # 选择工作表（默认是第一个工作表，也可以通过名称或索引指定）
-sheet = wb.active  # 获取活动工作表
+# sheet = wb.active  # 获取活动工作表
 # 或者
-sheet = wb['Sheet1']  # 通过名称获取工作表
+# sheet = wb['Sheet1']  # 通过名称获取工作表
 
 # 读取单元格内容
-cell_value = sheet['A1'].value  # 读取 A1 单元格的内容
+# cell_value = sheet['A1'].value  # 读取 A1 单元格的内容
 
 # 遍历行和列来读取数据
-for row in sheet.iter_rows(values_only=True):  # 值模式下遍历所有行
-    for cell in row:
-        print(cell)  # 输出当前单元格的值
+# for row in sheet.iter_rows(values_only=True):  # 值模式下遍历所有行
+#     for cell in row:
+#         print(cell)  # 输出当前单元格的值
 
 # 如果需要处理整个工作表的数据，可以将其转换为列表或其他数据结构
-data = []
-for row in sheet.iter_rows(values_only=True):
-    data.append([cell for cell in row])
+# data = []
+# for row in sheet.iter_rows(values_only=True):
+#     data.append([cell for cell in row])
 
 # 关闭工作簿（虽然不是必须，但建议在完成操作后关闭以释放资源）
-wb.close()
+# wb.close()
 
 
 class ExcelReader:
+    """
+    Excel文件读取器，支持上下文管理器。
+
+    参数:
+    - filename: 要读取的Excel文件的名称。
+
+    方法:
+    - __init__(self, filename): 构造函数，初始化Excel文件名称。
+    - __enter__(self): 进入上下文时调用，打开Excel工作簿并返回活动工作表。
+    - __exit__(self, exc_type, exc_val, exc_tb): 退出上下文时调用，关闭Excel工作簿。
+    """
+
     def __init__(self, filename):
+        """
+        初始化ExcelReader实例。
+
+        参数:
+        - filename: 要读取的Excel文件的路径。
+        """
         self.filename = filename
 
     def __enter__(self):
-        # 在进入上下文时打开工作簿
-        self.wb = load_workbook(self.filename)
-        return self.wb.active  # 返回活动工作表以供后续操作
+        """
+        进入上下文管理器，打开Excel文件并返回活动工作表。
+
+        返回:
+        - 返回活动工作表以供后续操作。
+        """
+        self.wb = load_workbook(self.filename)  # 打开工作簿
+        return self.wb.active  # 返回活动工作表
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        # 在退出上下文时关闭工作簿
+        """
+        退出上下文管理器，关闭Excel工作簿。
+
+        参数:
+        - exc_type: 异常类型 (在异常发生时传递)。
+        - exc_val: 异常值 (在异常发生时传递)。
+        - exc_tb: 异常追踪 (在异常发生时传递)。
+        """
         if not self.wb.is_closed:
-            self.wb.close()
+            self.wb.close()  # 如果工作簿未关闭，则关闭它
 
 
 # 使用示例：
-with ExcelReader('example.xlsx') as sheet:
-    cell_value = sheet['A1'].value  # 读取 A1 单元格的内容
-    print(cell_value)
+# with ExcelReader('example.xlsx') as sheet:
+#     cell_value = sheet['A1'].value  # 读取 A1 单元格的内容
+#     print(cell_value)
+
 
 # 上下文管理器会确保在完成操作后正确关闭工作簿，即使在处理过程中发生异常也是如此。
+
+
+def read_lines_from_file(file_path):
+    with open(file_path, 'r') as file:
+        while line := file.readline():
+            line = line.strip()
+            if line:
+                yield line
+
+
+file_path = '/Users/chenhao/PycharmProjects/pythonProjectTest/99_pd_/abcde.txt'
+for line in read_lines_from_file(file_path):
+    print(line)
