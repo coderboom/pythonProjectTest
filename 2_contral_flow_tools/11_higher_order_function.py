@@ -20,6 +20,28 @@ print(list(m), '\n', [*m])
 
 mm = map(lambda x, y: x ** 2 + y ** 3, [1, 2, 3, 4, 5], (6, 7, 8, 9))
 print(list(mm))
+
+
+def add_coordinates(x, y):
+    return (x, y, x + y)
+
+
+numbers_x = [1, 2, 3]
+numbers_y = [4, 5, 6]
+
+coordinates_with_sum = map(add_coordinates, numbers_x, numbers_y)
+
+# 打印结果
+for coord in coordinates_with_sum:
+    print(coord)
+
+"""当我们调用 map(add_coordinates, numbers_x, numbers_y) 时，
+    map() 函数将 numbers_x 和 numbers_y 中对应的元素（例如 numbers_x[0] 与 numbers_y[0]，numbers_x[1] 与 numbers_y[1] 等）打包成元组，
+    并将这些元组作为参数传递给 add_coordinates 函数。
+    map() 返回的新迭代器 coordinates_with_sum 包含了每次调用 add_coordinates 函数得到的结果。
+在循环遍历 coordinates_with_sum 并打印结果时，可以看到每个元素是一个包含坐标及其和的元组。
+
+"""
 print('---------------------------')
 
 """filter()
