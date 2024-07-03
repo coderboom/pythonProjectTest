@@ -12,8 +12,30 @@ my_list = [1, 2, 3, 4]
 for item in my_list:
     print(item)
 
-"""在这段代码中，Python首先调用my_list.__iter__()——（或者是使用内置函数iter(iterable/iteraror)）得到一个迭代器对象，
-然后不断调用该迭代器的__next__()方法，每次获取并打印列表中的下一个元素。"""
+"""在这段代码中，Python首先调用my_list.__iter__()——（或者是使用内置函数iter(iterable/iterator)）得到一个---迭代器对象---，
+然后不断调用————迭代器对象.__next__()————方法，每次获取并打印列表中的下一个元素。
+
+获取一个迭代器
+显示调用：iter(iterable/iterator)
+隐示调用：Iterable.__iter__()
+
+迭代获取下一个元素
+显示调用：next(iterator)
+隐示调用：iterator.__iter__()
+
+在Python中，for循环处理迭代器对象的方式是自动进行的，它隐式地调用了__iter__和__next__方法。
+    而当不在for循环中时，如果你想手动控制迭代过程，就需要显式地使用iter()和next()函数。
+在for循环中：
+    当你使用for循环遍历一个对象，例如for item in some_iterable:，Python会自动执行以下操作：
+    首先，它调用some_iterable.__iter__()来获取迭代器。如果some_iterable支持迭代，它通常会返回一个迭代器对象。
+    然后，Python在每次迭代时隐式调用iterator.__next__()来获取下一个元素，直到StopIteration异常被抛出，表示迭代结束。
+    
+不在for循环中：
+    如果你想手动控制迭代过程，你可以这样做：
+    使用iter(some_iterable)来获取迭代器，这相当于调用some_iterable.__iter__()。
+    然后，使用next(iterator)来获取迭代器的下一个元素，这相当于调用iterator.__next__()。
+    你需要反复调用next()，直到StopIteration异常被抛出
+"""
 # 上面的例子等价于
 iterator_my_list = iter(my_list)
 while True:
@@ -30,7 +52,7 @@ for <变量> in <可迭代对象>：
 1、从<可迭代对象>中获取第一个元素，将它赋值给<变量>.
 2、然后执行循环体中的<逻辑代码>。一般情况下，循环体中的语句会使用<变量>中的值来执行一些操作。
 3、从头开始执，从<可迭代对象>中获取下一个元素。
-4、如此往复，直至执行完<可迭代对象>的最后一个元素为止，或 直到遇到break语句或遇到StopIteration异常。
+————————4、如此往复，直至执行完<可迭代对象>的最后一个元素为止，或 直到遇到break语句或遇到StopIteration异常。————————
 """
 print('----------------------')
 """
@@ -117,4 +139,3 @@ for i in range(3):  # 外层循环
 # i: 1, j: 3
 # i: 2, j: 1
 # i: 2, j: 3
-

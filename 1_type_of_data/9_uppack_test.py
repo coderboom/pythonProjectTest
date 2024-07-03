@@ -38,6 +38,7 @@ print(d)
 """
 *args:常用来声明元组变量（位置变量） 注：解包到函数调用的圆括号内，是将可迭代对象拆开，其元素作为传递给函数的参数。
     所以语法将不支持(*iterable)：将容器直接解包到创建元组的圆括号内，但可以合并到一个元组中（和一个空元组合并）。
+    
 **kwargs:常用来声明字典变量（关键字变量）
 """
 args = [1, 2, 3, 4]
@@ -47,6 +48,7 @@ def f(a, b, c, d):
     print(a, c, b, d)
 
 
+"""解包到函数的形参位置，是作为位置参数"""
 f(*args)  # 输出: 1 3 2 4
 
 
@@ -75,3 +77,9 @@ print(a, *b, c)
 print(type(b))  # 输出: <class 'list'>
 c, *_, d = range(20, 30)  # 变量_是一个特殊的变量，用_来接收不使用的变量
 print(c, d, sep=' ')
+
+print('------------------------')
+
+numbers = [1, 2.5, 'three']
+*individual_numbers, = numbers
+print(type(individual_numbers), individual_numbers)  # <class 'list'>  [1, 2.5, 'three']

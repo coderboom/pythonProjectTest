@@ -63,8 +63,15 @@ print(c1, '\n', c2)
 c2['n']['b'] = 999
 print(c1, '\n', c2)
 
+print('---------------------------------OrderedDict------------------------------------')
+
 """有序字典OrderedDict
-显示的、有明确类型意义的、有顺序的字典"""
+显示的、有明确类型意义的、有顺序的字典————兼容python2时需要用到
+
+从 Python 3.7 版本开始，字典（dict）类型在 Python 中被设计为保持其元素的插入顺序。
+    这一特性在 Python 3.7 的官方文档中得到了明确说明，并且在后续的 Python 3.8、3.9、3.10 及以后版本中继续保持。
+    这意味着，自 Python 3.7 起，当你向字典中添加键值对时，它们会按照添加的先后顺序存储和遍历
+"""
 from collections import OrderedDict
 
 d1 = {'a': 1, 'b': 2, 'c': 3}
@@ -90,6 +97,7 @@ f.fromkeys(['a', 'b', 'c'], )  # 以iterable构建字典的健，如果value为�
 f.fromkeys(['a', 'b', 'c'], 1)  # 以iterable构建字典的健，value设为默认值1
 f.fromkeys(['a', 'b', 'c'], [1, 2, 3])  # 以iterable构建字典的健，value设为默认值【1，2，3】
 
+print('---------------------------------Chainmap------------------------------------')
 """映射链Chainmap
 可将多个字典或者其他映射类型的对象链接起来，形成（一个）逻辑上的字典/逻辑上的单一映射。
 
@@ -121,6 +129,21 @@ chain_dict['y'] = 5
 print(chain_dict.maps[0]['y'])  # 输出：5，原 dict1 中的 'y' 已经更新为 5
 print(chain_dict.maps[0], chain_dict.maps[1])
 
+# 添加元素
+print('---------------------在chainmap中添加/删除元素------------------------')
+"""
+在chainmap中添加元素，是在---第 1 个---dict---中添加
+"""
+chain_dict['gold'] = 'asdasdadadasd'
+print(chain_dict)
+
+print('---------------------在chainmap中查询/修改元素------------------------')
+"""
+    若修改除第一个dict以外dict的元素，直接使用 hain_dict[var]=‘adasd’ 会导致第一个dict中添加 var=adasd，
+
+    若查询元素，会优先从第一个dict中查询，若有则返回，若第一个dict中没有，继续第二个dict中查询。
+"""
+
 """在collections.ChainMap中，new_child()方法用于创建一个新的子映射，并将其添加到ChainMap的最前面。
 这意味着当查找键时，新的子映射将拥有最高的优先级"""
 
@@ -129,7 +152,7 @@ dict1 = {'x': 1, 'y': 2}
 dict2 = {'y': 3, 'z': 4}
 chain_dict = ChainMap(dict1, dict2)
 
-"""# 创建并附加一个新的子映射
+""" 创建并附加一个新的子映射
 输出: ChainMap({'y': 5, 'w': 6}, {'x': 1, 'y': 2}, {'y': 3, 'z': 4})
 在chain_dict这个映射关系内创建一个子映射，子映射的优先级高于原映射（位于原有内部维护的映射顺序之前的位置）"""
 new_child_dict = {'y': 5, 'w': 6}
@@ -148,6 +171,8 @@ print(new_child)  # 输出新映射内容，包含原有映射以及新增的键
 print('----------------------')
 """通过 .maps 属性可以查看和修改 ChainMap 内部维护的映射列表顺序，这对于处理层级环境变量、配置文件继承等场景非常有用。
 """
+
+print('---------------------------------defaultdict------------------------------------')
 
 from collections import defaultdict
 
@@ -176,6 +201,7 @@ for str1, value in default_dict_2.items():
     print(f'{str1}:{value}')
 
 print('00000000000000000000000')
+
 """Counter:计数器
 用于计算元素出现的次数，类似于一个字典，但键是元素本身，值是元素出现的次数。"""
 from collections import Counter

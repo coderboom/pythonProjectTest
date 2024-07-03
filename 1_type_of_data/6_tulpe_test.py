@@ -36,16 +36,41 @@ print('--------------------------')
 """
 namedtuple()函数创建一个自定义的tuple类，使用方式和tuple一样，但可以自定义类名和属性名
 """
-Stu = namedtuple('Student111', ['name', 'age', 'sex'])  # 创建一个Stu的类
+
+"""
+E = namedtuple('Employee', 'name,age,title,department')
+这里，namedtuple 函数创建了一个名为 Employee 的新元组类型，并且这个类型被赋值给了变量 E。
+    这意味着 E 实际上是一个类，具体来说，它是 namedtuple 生成的 Employee 类。
+
+当你使用 E 创建对象时，例如：
+employee = E('Alice', 30, 'Engineer', 'R&D')
+你实际上创建了一个 Employee 类型的实例，但是通过 E 这个别名来引用它。因此，employee 是一个具有姓名、年龄、职位和部门字段的 Employee 对象。
+
+Employee 是 namedtuple 所创建的类的名字，这个名字主要用于调试和文档字符串中，帮助程序员理解这个类型代表什么。
+E 是一个变量名，用来引用 Employee 类型。在 Python 中，类型本身也是对象，可以被赋值给变量。
+    所以，E 和 Employee 在这里是等价的，只是 E 是我们用来引用这个类型的名称。
+
+总结
+因此，从实际用途来看，E 和 Employee 没有区别：它们都引用了同一个由 namedtuple 创建的类型。
+    区别只在于名称：Employee 是类型的名字，E 是这个类型的一个引用。
+    在 Python 编程中，可以选择用 E 来代替 Employee 作为类型名称，这样可以使代码更简洁，或者符合特定的命名约定。
+
+"""
+E = namedtuple('Employee', 'name,age,title,department')
+
+Stu = namedtuple('Student', ['name', 'age', 'sex'])  # 创建一个Stu的类
 # Stu1 = namedtuple('Stu', 'name, age, sex')
 # Stu2 = namedtuple('Stu', 'name age sex') # 以上三种方式都可以
 s = Stu('zhangsan', 18, '男')  # 实例化一个对象
 print(s)
 print(type(s), isinstance(s, tuple), issubclass(Stu, tuple))  # 类型; 是否是tuple; 是否是tuple的子类
 
+# 打印s这个实例的文档信息
 print(s.__doc__)
+
 s2 = namedtuple('Stu', range(3), rename=True)
 print(s2.__doc__)
+
 print('--------------------------')
 print(s[0], s[2])  # 通过下标访问属性
 print(s.age)  # 通过属性访问属性
@@ -56,6 +81,7 @@ print(tuple(s))  # 将对象转换为元组
 s = s._replace(age=100)  # 通过_replace()方法修改属性值
 print(s)
 print('--------------------------')
+
 """zip()函数是一个内建函数，它用于将可迭代对象（如列表、元组、字符串或其他迭代器）中的元素按相同位置配对，并返回一个包含这些配对的“元组序列”。
 在Python 3中，zip()函数直接返回一个可迭代的zip对象（单次迭代：只能迭代一次），而不是列表。如果需要将zip对象转换为列表形式，可以使用list()函数
 

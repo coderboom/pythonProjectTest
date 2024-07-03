@@ -3,6 +3,7 @@ print(cars_config.get('volvo1', 'ccccaaaaa'))
 print(cars_config.get('asdad'))  # 不提供默认值返回的是： None
 """
 使用字典的get方法，可以设置默认返回参数，不用在去判断是否有这这个键，在大部分场景下能使代码更整洁
+
 传统方法根据键取值，若键不存在，会抛出异常
          ——————在具体使用场景需要两者衡量一下
 """

@@ -2,9 +2,9 @@ matrix = [[1, 2, 3],
           [4, 5, 6],
           [7, 8, 9]]
 width = 3
-heigh = 3
+high = 3
 result = [
-    [matrix[row][col] for row in range(0, heigh)] for col in range(0, width)
+    [matrix[row][col] for row in range(0, high)] for col in range(0, width)
 ]
 print(result)
 
@@ -26,8 +26,9 @@ Traceback (most recent call last):
     return 100 / x
            ~~~~^~~
 ZeroDivisionError: division by zero
-"""
 
+"""
+print('----------------------------lambda 表达式不好处理0作为除数的情况-----------------------------')
 # fx(0)
 """
 Traceback (most recent call last):
@@ -48,9 +49,9 @@ for data in [2, 3, 4, 6, 7, 9]:
 else:
     print('normal over')
 
-data = [2, 3, 4, 6, 7, 9]
-while data:
-    x = data.pop()
+data1 = [2, 3, 4, 6, 7, 9]
+while data1:
+    x = data1.pop()
     if x == 4:
         break
     print(x, ':in the list')
