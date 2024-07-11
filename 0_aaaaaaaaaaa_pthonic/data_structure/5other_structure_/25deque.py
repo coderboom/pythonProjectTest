@@ -20,7 +20,7 @@ def tail(filename, n=10):
         return deque(f, n)
 
 
-file_path = '/Users/chenhao/PycharmProjects/pythonProjectTest/ZZ_2Decoupling_of_classes/product_report.txt'
+file_path = '/0_aaaaaaaaaaa_pthonic/data_structure/3_Decoupling_of_classes/product_report.txt'
 data = tail(file_path, 4)
 print(data)
 

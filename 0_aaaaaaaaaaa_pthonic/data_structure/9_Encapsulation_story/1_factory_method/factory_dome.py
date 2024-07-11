@@ -1,5 +1,4 @@
 import json
-
 from player import Player, Forward, MiddleField, DefenseField, GoalKeeper
 from player_factory import register, create
 
@@ -53,7 +52,7 @@ def main1():
 
     for args in data['players']:
         player = create(args)  # 从工厂获取实例
-        print(player)
+        # print(player)
         player.action()
 
 
@@ -61,7 +60,7 @@ def main2(data):
     players = data.copy()
     for args in players['players']:
         player = create(args)  # 从工厂获取实例
-        print(player)
+        # print(player)
         player.action()
 
 
@@ -70,11 +69,12 @@ if __name__ == '__main__':
     # 注册player
     # register_player()
     # main1()
-    
+
     # 第二版
     # 注册player
     register_player()
     # 加载数据
     data = load_players()
+    print(data)
     # 处理数据
     main2(data)

@@ -1,5 +1,11 @@
 from abc import abstractmethod, ABC
 
+"""
+作为abc模块的抽象基类一节的补充，带着大家先从一个传统的例子入手，发现其中的代码的坏味道，然后通过重构，引入工厂方法来管理实现了多态对象的优雅生成。
+例子里面展现了Pythonic的工厂方法的设计与实现，既简单又优雅。
+同时也向大家传递了“封闭原则”、“依赖注入”，“不变”的编程思想以及重构的时机的把控。
+"""
+
 
 class Player(ABC):
     def __init__(self, name, role):
@@ -23,7 +29,7 @@ class Player(ABC):
 class Forward(Player):
 
     def action(self):
-        print(f"{self.name},带球突破，过后卫凌空抽射！")
+        print(f"{self.name},前锋带球突破，过后卫凌空抽射！")
 
 
 class MiddleField(Player):
