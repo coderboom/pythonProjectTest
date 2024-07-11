@@ -1,0 +1,20 @@
+{
+  "players": [
+    {
+      "name": "Eruc Cantona",
+      "role": "FW"
+    },
+    {
+      "name": "David Beckham",
+      "role": "MF"
+    },
+    {
+      "name": "Steve Bruce",
+      "role": "DF"
+    },
+    {
+      "name": "布冯",
+      "role": "GK"
+    }
+  ]
+}

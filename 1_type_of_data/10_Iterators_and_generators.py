@@ -5,6 +5,7 @@ from collections import abc
 迭代器：实现__iter__()和__next__方法的对象，都可以被next函数调用，直到StopIteration异常。
 生成器：生成器是一种特殊的迭代器，但它并不直接实现 __iter__() 和 __next__() 方法，
     而是通过 yield 关键字在函数内部产生值。
+    
     Python解释器会自动将这样的函数转换为生成器对象，并提供相应的 __iter__() 和 __next__() 方法。
 """
 print(isinstance([1, 2, 3], abc.Iterator))  # False
@@ -16,7 +17,13 @@ print(isinstance(123, abc.Iterator))  # False
 print(isinstance((i for i in range(10)), abc.Iterator))  # True
 """在Python中存在类似元组推导式的语法结构，不过它并不直接生成元组，而是生成一个--生成器表达式--。
 这是因为当使用圆括号 () 进行推导时，Python会将其解释为生成器表达式（generator expression），而非直接创建元组，
-————————这就是没有元组生成器的原因。
+    ————————这就是没有元组生成器的原因。
+    
+生成器表达式可以：
+1、使用for 循环迭代
+2、转换成list、tuple、set等
+3、使用next()函数，逐个获取值，直到引发StopIteration异常。
+4、作为函数参数 :可以直接作为需要迭代器参数的函数的输入，如sum()、any()、all()等：
 """
 
 """如果想得到一个元组，可以通过调用 tuple 函数将生成器表达式转换为
