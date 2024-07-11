@@ -1,8 +1,15 @@
-"""类的封装"""
+"""类的解藕"""
 from typing import Optional
 from outputer import Outputer, PrintOutputer, FileOutputer, CombineOutputer
 from outputer_factory import register, unregister, create
 import json
+
+print('类的解藕')
+"""
+高内聚，低耦合是理想的系统设计的目标。这次的关注点在如何做到低耦合，也就是解耦的工作。
+一个需要坚持的原则是依赖抽象，不依赖实现。通过上次ProductReporter例子的输出器部分的重构，让大家看到如何去做解耦的方式与思路。
+同时也渗透了不要过多预先设计的坏习惯，任何技术的变更都应该服务于业务，以业务为中心的原则。
+"""
 
 
 class Product:
